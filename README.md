@@ -11,11 +11,14 @@
     - [Eine Datenmenge als Argument](#eine-datenmenge-als-argument)
     - [Zwei Datenmengen als Argumente](#zwei-datenmengen-als-argumente)
     - [Array](#array)
+      - [Beispiel Output: Array](#beispiel-output-array)
     - [JSON](#json)
+      - [Beispiel Output: JSON](#beispiel-output-json)
     - [String](#string)
+      - [Beispiel Output: String](#beispiel-output-string)
   - [Methode 2: Reichweite als Argumente](#methode-2-reichweite-als-argumente)
     - [Erläuterung](#erläuterung)
-    - [Beispielausgabe:](#beispielausgabe)
+    - [Beispiel Output: Methode 2](#beispiel-output-methode-2)
   - [Autoren](#autoren)
 ## Info
 ### Script
@@ -58,18 +61,73 @@ $ Rscript ttest2.R $myvar1 $myvar2
 ```
 - Input: Datenmenge/n als Array/s
 - Output: T-Test Ergebnis als Array
+#### Beispiel Output: Array
+```
+$statistic
+        t
+0.9361134
+
+$parameter
+      df
+997.9834
+
+$p.value
+[1] 0.3494413
+
+$conf.int
+[1] -0.03728208  0.10529848
+attr(,"conf.level")
+[1] 0.95
+
+$estimate
+mean of x mean of y
+ 13.00976  12.97575
+
+$null.value
+difference in means
+                  0
+
+$stderr
+[1] 0.03632915
+
+$alternative
+[1] "two.sided"
+
+$method
+[1] "Welch Two Sample t-test"
+
+$data.name
+[1] "output_head and output_tail"
+```
 ### JSON
 ```
 /src/array_to_json/
 ```
 - Input: Datenmenge/n als Array/s
 - Output: T-Test Ergebnis als JSON
+#### Beispiel Output: JSON
+```
+[1] "{\"statistic\":{\"t\":0.936113410371988},\"parameter\":{\"df\":997.98335382368},\"p.value\":0.349441262360706,\"conf.int\":[-0.0372820759463322,0.10529847594633],\"estimate\":{\"mean of x\":13.0097578,\"mean of y\":12.9757496},\"null.value\":{\"difference in means\":0},\"stderr\":0.0363291451903085,\"alternative\":\"two.sided\",\"method\":\"Welch Two Sample t-test\",\"data.name\":\"output_head and output_tail\"}"
+```
 ### String
 ```
 /src/array_to_string/
 ```
 - Input: Datenmenge/n als Array/s
 - Output: T-Test Ergebnis als String
+#### Beispiel Output: String
+```
+        Welch Two Sample t-test
+
+data:  array and array2
+t = 0.93611, df = 997.98, p-value = 0.3494
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -0.03728208  0.10529848
+sample estimates:
+mean of x mean of y
+ 13.00976  12.97575
+```
 ## Methode 2: Reichweite als Argumente
 **Achtung: Datenbank MySql**
 - Rscript ausfüren
@@ -86,7 +144,7 @@ Es wird ein T-Test für jeden Sensor mit den Daten der Einträge aus der Menge (
 
 
 
-### Beispielausgabe:
+### Beispiel Output: Methode 2
 ```
 Loading required package: DBI
 [1] "{\"statistic\":{\"t\":0.936113410371988},\"parameter\":{\"df\":997.98335382368},\"p.value\":0.349441262360706,\"conf.int\":[-0.0372820759463322,0.10529847594633],\"estimate\":{\"mean of x\":13.0097578,\"mean of y\":12.9757496},\"null.value\":{\"difference in means\":0},\"stderr\":0.0363291451903085,\"alternative\":\"two.sided\",\"method\":\"Welch Two Sample t-test\",\"data.name\":\"temperature_water_head and temperature_water_tail\"}"
