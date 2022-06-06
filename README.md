@@ -26,19 +26,19 @@
   - [Autoren](#autoren)
 ## Info
 ### Script
-Getestet auf Ubuntu 20.04 mit R version 4.2.0
+Getestet auf **Ubuntu 20.04** mit **R 4.2.0** und **MySql 8.0.29**
 ### Daten
 Der T-Test erwartet zwei Datenmengen. Das Ergebnis ist ein mathematischer Vergleich dieser Mengen.
 ### Funktion
-  [R Docu T-Test](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/t.test)
+  [R-Docu/T-Test](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/t.test)
   Die Funktion wird mit den beiden Datenmengen als Argumente aufgerufen.
   ```
   t.test(sensordata1, sensordata2)
   ```  
 ## Vorraussetzungen
-- R Installieren: [R VsCode Docs](https://code.visualstudio.com/docs/languages/r), [r-project.org](https://cloud.r-project.org/)
+- R Installieren: [VsCode-R-Docs](https://code.visualstudio.com/docs/languages/r), [r-project.org](https://cloud.r-project.org/)
 - Optional:
-  - rjson Packet (Methode 1: JSON)
+  - rjson Packet (Methode 1 [JSON])
   - RMySQL Packet (Methode 2)
 ## Methode 1: Daten als Argument
 ### Anwendung
