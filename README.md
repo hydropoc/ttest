@@ -17,7 +17,6 @@
     - [Erläuterung](#erläuterung)
     - [Beispielausgabe:](#beispielausgabe)
   - [Autoren](#autoren)
-****
 ## Info
 ### Script
 Getestet auf Ubuntu 20.04 mit R version 4.2.0
@@ -29,13 +28,11 @@ Der T-Test erwartet zwei Datenmengen. Das Ergebnis ist ein mathematischer Vergle
   ```
   t.test(sensordata1, sensordata2)
   ```  
-****
 ## Vorraussetzungen
 - R Installieren: [R VsCode Docs](https://code.visualstudio.com/docs/languages/r), [r-project.org](https://cloud.r-project.org/)
 - Optional:
   - rjson Packet (Methode 1: JSON)
   - RMySQL Packet (Methode 2)
-****
 ## Methode 1: Daten als Argument
 ### Eine Datenmenge als Argument
 - Daten eines Sensors laden z.b: 1000 Einträge
@@ -73,7 +70,6 @@ $ Rscript ttest2.R $myvar1 $myvar2
 ```
 - Input: Datenmenge/n als Array/s
 - Output: T-Test Ergebnis als String
-****
 ## Methode 2: Reichweite als Argumente
 **Achtung: Datenbank MySql**
 - Rscript ausfüren
@@ -111,7 +107,6 @@ Loading required package: DBI
 
 [9] "{\"statistic\":{\"t\":0.0818279151417404},\"parameter\":{\"df\":996.563892955119},\"p.value\":0.934799988505144,\"conf.int\":[-3.44720874551354,3.7472087455135],\"estimate\":{\"mean of x\":949.446,\"mean of y\":949.296},\"null.value\":{\"difference in means\":0},\"stderr\":1.83311526072919,\"alternative\":\"two.sided\",\"method\":\"Welch Two Sample t-test\",\"data.name\":\"swimmer_3_head and swimmer_3_tail\"}"
 ```
-****
 ## Autoren
 * **Deon Gulbinat** - [Profile]()
 * **Kevin Müller** - [Profile]()
