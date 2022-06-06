@@ -60,19 +60,19 @@ $ Rscript ttest2.R $myvar1 $myvar2
 ```
 /src/array_to_array/
 ```
-- Input: Datenmenge als Array
+- Input: Datenmenge/n als Array/s
 - Output: T-Test Ergebnis als Array
 ### JSON
 ```
 /src/array_to_json/
 ```
-- Input: Datenmenge als Array
+- Input: Datenmenge/n als Array/s
 - Output: T-Test Ergebnis als JSON
 ### String
 ```
 /src/array_to_string/
 ```
-- Input: Datenmenge als Array
+- Input: Datenmenge/n als Array/s
 - Output: T-Test Ergebnis als String
 ****
 ## Methode 2: Reichweite als Argumente
