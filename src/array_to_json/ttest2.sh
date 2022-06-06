@@ -1,5 +1,17 @@
-records1=$(mysql -Druser -uruser -pruser -se "SELECT temperature_water FROM sensordata WHERE id BETWEEN 1 AND 500")
+#!/bin/bash
 
-records2=$(mysql -Druser -uruser -pruser -se "SELECT temperature_water FROM sensordata WHERE id BETWEEN 501 AND 1000")
+db=$1
+user=$2
+pw=$3
+sensor=$4
+table=$5
+start1=$6
+end1=$7
+start2=$8
+end2=$9
+
+records1=$(mysql -D$db -u$user -p$pw -se "SELECT $sensor FROM $table WHERE id >= $start1 AND id <= $end1")
+
+records2=$(mysql -D$db -u$user -p$pw -se "SELECT $sensor FROM $table WHERE id >= $start2 AND id <= $end2")
 
 Rscript ttest2.R $records1 $records2

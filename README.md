@@ -8,14 +8,18 @@
     - [Funktion](#funktion)
   - [Vorraussetzungen](#vorraussetzungen)
   - [Methode 1: Daten als Argument](#methode-1-daten-als-argument)
-    - [Eine Datenmenge als Argument](#eine-datenmenge-als-argument)
-    - [Zwei Datenmengen als Argumente](#zwei-datenmengen-als-argumente)
-    - [Array](#array)
-      - [Beispiel Output: Array](#beispiel-output-array)
-    - [JSON](#json)
-      - [Beispiel Output: JSON](#beispiel-output-json)
-    - [String](#string)
-      - [Beispiel Output: String](#beispiel-output-string)
+    - [Anwendung](#anwendung)
+      - [Eine Datenmenge als Argument](#eine-datenmenge-als-argument)
+        - [Beispiel eine Datenmenge /ttest.sh:](#beispiel-eine-datenmenge-ttestsh)
+      - [Zwei Datenmengen als Argumente](#zwei-datenmengen-als-argumente)
+        - [Beispiel zwei Datenmengen /ttest2.sh:](#beispiel-zwei-datenmengen-ttest2sh)
+    - [Output](#output)
+      - [Array](#array)
+        - [Beispiel Output: Array](#beispiel-output-array)
+      - [JSON](#json)
+        - [Beispiel Output: JSON](#beispiel-output-json)
+      - [String](#string)
+        - [Beispiel Output: String](#beispiel-output-string)
   - [Methode 2: Reichweite als Argumente](#methode-2-reichweite-als-argumente)
     - [Erläuterung](#erläuterung)
     - [Beispiel Output: Methode 2](#beispiel-output-methode-2)
@@ -37,7 +41,8 @@ Der T-Test erwartet zwei Datenmengen. Das Ergebnis ist ein mathematischer Vergle
   - rjson Packet (Methode 1: JSON)
   - RMySQL Packet (Methode 2)
 ## Methode 1: Daten als Argument
-### Eine Datenmenge als Argument
+### Anwendung
+#### Eine Datenmenge als Argument
 - Daten eines Sensors laden z.b: 1000 Einträge
 - Rscript ausfüren:
   - ttest.R: Das Script übergibt dem T-Test jeweils die hälfte der Eingangsdaten als Argumente
@@ -45,7 +50,13 @@ Der T-Test erwartet zwei Datenmengen. Das Ergebnis ist ein mathematischer Vergle
 $ myvar=$(mysql -D$MYDB -u$MYUSER -p$MYPASS -se "SELECT sensor FROM sensordata")
 $ Rscript ttest.R $myvar
 ```
-### Zwei Datenmengen als Argumente
+##### Beispiel eine Datenmenge /ttest.sh:
+**Datenmenge:** Id: 1 bis 1000
+```
+$ /bin/bash ttest.sh $db $user $pw $sensor $table 1 1000
+```
+****
+#### Zwei Datenmengen als Argumente
 - Zwei Datenmengen eines Sensors laden
 - Rscript ausfüren:
   - ttest2.R: Das Script übergibt dem T-Test die beiden Eingangsdaten als Argumente
@@ -54,14 +65,23 @@ $ myvar1=$(mysql -D$MYDB -u$MYUSER -p$MYPASS -se "SELECT sensor FROM sensordata 
 $ myvar2=$(mysql -D$MYDB -u$MYUSER -p$MYPASS -se "SELECT sensor FROM sensordata WHERE id BETWEEN 501 AND 1000")
 $ Rscript ttest2.R $myvar1 $myvar2
 ```
-
-### Array 
+##### Beispiel zwei Datenmengen /ttest2.sh:
+**Datenmenge 1:** Id: 1 bis 500
+**Datenmenge 2:** Id: 501 bis 1000
+```
+$ /bin/bash ttest2.sh 1 $db $user $pw $sensor $table 1 500 501 1000
+```
+****
+### Output
+#### Array 
 ```
 /src/array_to_array/
+  ttest.sh
+  ttest2.sh
 ```
 - Input: Datenmenge/n als Array/s
 - Output: T-Test Ergebnis als Array
-#### Beispiel Output: Array
+##### Beispiel Output: Array
 ```
 $statistic
         t
@@ -99,23 +119,29 @@ $method
 $data.name
 [1] "output_head and output_tail"
 ```
-### JSON
+****
+#### JSON
 ```
 /src/array_to_json/
+  ttest.sh
+  ttest2.sh
 ```
 - Input: Datenmenge/n als Array/s
 - Output: T-Test Ergebnis als JSON
-#### Beispiel Output: JSON
+##### Beispiel Output: JSON
 ```
 [1] "{\"statistic\":{\"t\":0.936113410371988},\"parameter\":{\"df\":997.98335382368},\"p.value\":0.349441262360706,\"conf.int\":[-0.0372820759463322,0.10529847594633],\"estimate\":{\"mean of x\":13.0097578,\"mean of y\":12.9757496},\"null.value\":{\"difference in means\":0},\"stderr\":0.0363291451903085,\"alternative\":\"two.sided\",\"method\":\"Welch Two Sample t-test\",\"data.name\":\"output_head and output_tail\"}"
 ```
-### String
+****
+#### String
 ```
 /src/array_to_string/
+  ttest.sh
+  ttest2.sh
 ```
 - Input: Datenmenge/n als Array/s
 - Output: T-Test Ergebnis als String
-#### Beispiel Output: String
+##### Beispiel Output: String
 ```
         Welch Two Sample t-test
 
@@ -136,15 +162,18 @@ mean of x mean of y
 
 $ Rscript ttest.R $startID $endID
 ```
+****
 ### Erläuterung
 Es wird ein T-Test für jeden Sensor mit den Daten der Einträge aus der Menge (startID bis endID) erstellt.
   Das Script übergibt dem T-Test jeweils **die hälfte der Eingangsdaten** als Argument.
 - Input: Erste und letzte ID der Datenmenge
 - Output: Ein Array mit den T-Test Ergebnissen im JSON Format
-
-
-
+****
 ### Beispiel Output: Methode 2
+**Datenmenge:** Id: 1 bis 1000
+```
+$ Rscript ttest.R 1 1000
+```
 ```
 Loading required package: DBI
 [1] "{\"statistic\":{\"t\":0.936113410371988},\"parameter\":{\"df\":997.98335382368},\"p.value\":0.349441262360706,\"conf.int\":[-0.0372820759463322,0.10529847594633],\"estimate\":{\"mean of x\":13.0097578,\"mean of y\":12.9757496},\"null.value\":{\"difference in means\":0},\"stderr\":0.0363291451903085,\"alternative\":\"two.sided\",\"method\":\"Welch Two Sample t-test\",\"data.name\":\"temperature_water_head and temperature_water_tail\"}"
