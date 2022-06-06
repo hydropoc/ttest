@@ -71,7 +71,6 @@ $ Rscript ttest2.R $myvar1 $myvar2
 ```
 $ /bin/bash ttest2.sh 1 $db $user $pw $sensor $table 1 500 501 1000
 ```
-****
 ### Output
 #### Array 
 ```
