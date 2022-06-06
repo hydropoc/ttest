@@ -9,6 +9,8 @@
     - [Funktion](#funktion)
   - [Vorraussetzungen](#vorraussetzungen)
   - [Methode 1: Daten als Argument](#methode-1-daten-als-argument)
+    - [Eine Datenmenge als Argument](#eine-datenmenge-als-argument)
+    - [Zwei Datenmengen als Argumente](#zwei-datenmengen-als-argumente)
     - [Array](#array)
     - [JSON](#json)
     - [String](#string)
@@ -36,15 +38,17 @@ Der T-Test erwartet zwei Datenmengen. Das Ergebnis ist ein mathematischer Vergle
   - RMySQL Packet (Methode 2)
 ****
 ## Methode 1: Daten als Argument
+### Eine Datenmenge als Argument
 - Daten eines Sensors laden z.b: 1000 Einträge
-- Rscript ausfüren 1:
+- Rscript ausfüren:
   - ttest.R: Das Script übergibt dem T-Test jeweils die hälfte der Eingangsdaten als Argumente
 ```
 $ myvar=$(mysql -D$MYDB -u$MYUSER -p$MYPASS -se "SELECT sensor FROM sensordata")
 $ Rscript ttest.R $myvar
 ```
+### Zwei Datenmengen als Argumente
 - Zwei Datenmengen eines Sensors laden
-- Rscript ausfüren 2:
+- Rscript ausfüren:
   - ttest2.R: Das Script übergibt dem T-Test die beiden Eingangsdaten als Argumente
 ```
 $ myvar1=$(mysql -D$MYDB -u$MYUSER -p$MYPASS -se "SELECT sensor FROM sensordata WHERE id BETWEEN 1 AND 500")
