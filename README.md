@@ -52,6 +52,8 @@ $ Rscript ttest.R $myvar
 ```
 ##### Beispiel eine Datenmenge /ttest.sh:
 **Datenmenge:** Id: 1 bis 1000
+
+Ergebnis Ausgabe im Terminal:
 ```bash
 $ /bin/bash ttest.sh $db $user $pw $sensor $table 1 1000
 ```
@@ -71,7 +73,10 @@ $ Rscript ttest2.R $myvar1 $myvar2
 ```
 ##### Beispiel zwei Datenmengen /ttest2.sh:
 **Datenmenge 1:** Id: 1 bis 500
+
 **Datenmenge 2:** Id: 501 bis 1000
+
+Ergebnis Ausgabe im Terminal:
 ```bash
 $ /bin/bash ttest2.sh 1 $db $user $pw $sensor $table 1 500 501 1000
 ```
@@ -197,7 +202,7 @@ Loading required package: DBI
 ```
 ## Autoren
 * **Deon Gulbinat** - [Profile]()
-* **Kevin Müller** - [Profile]()
+* **Kevin Müller** - [GitHub](https://github.com/hydrokevin)
 * **Jan Breninek** - [Profile]()
 * **Emanuel Kass** - [Profile]()
 * **René Schäfer** - [Profile]()
