@@ -10,4 +10,10 @@ end=$7
 
 records=$(mysql -D$db -u$user -p$pw -se "SELECT $sensor FROM $table WHERE id >= $start AND id <= $end")
 
-Rscript ttest.R $records
+ttest=$(Rscript ttest.R $records)
+
+date=$(date '+%Y-%m-%dT%H:%M:%S')
+
+cat <<EOF > ./$date.ttest
+$ttest
+EOF

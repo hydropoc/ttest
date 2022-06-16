@@ -1,0 +1,11 @@
+
+	Welch Two Sample t-test
+
+data:  output_head and output_tail
+t = 1.2987, df = 997.74, p-value = 0.1943
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -0.04842605  0.23796645
+sample estimates:
+mean of x mean of y 
+ 37.98022  37.88545 
