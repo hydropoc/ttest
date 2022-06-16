@@ -55,6 +55,10 @@ $ Rscript ttest.R $myvar
 ```bash
 $ /bin/bash ttest.sh $db $user $pw $sensor $table 1 1000
 ```
+Ergebnis in Datei sichern:
+```bash
+$ /bin/bash ttest_to_file.sh $db $user $pw $sensor $table 1 1000
+```
 ****
 #### Zwei Datenmengen als Argumente
 - Zwei Datenmengen eines Sensors laden
@@ -71,12 +75,14 @@ $ Rscript ttest2.R $myvar1 $myvar2
 ```bash
 $ /bin/bash ttest2.sh 1 $db $user $pw $sensor $table 1 500 501 1000
 ```
+Ergebnis in Datei sichern:
+```bash
+$ /bin/bash ttest_to_file2.sh $db $user $pw $sensor $table 1 500 501 1000
+```
 ### Output
 #### Array 
 ```bash
 /src/array_to_array/
-  ttest.sh
-  ttest2.sh
 ```
 - Input: Datenmenge/n als Array/s
 - Output: T-Test Ergebnis als Array
@@ -122,8 +128,6 @@ $data.name
 #### JSON
 ```bash
 /src/array_to_json/
-  ttest.sh
-  ttest2.sh
 ```
 - Input: Datenmenge/n als Array/s
 - Output: T-Test Ergebnis als JSON
@@ -135,8 +139,6 @@ $data.name
 #### String
 ```bash
 /src/array_to_string/
-  ttest.sh
-  ttest2.sh
 ```
 - Input: Datenmenge/n als Array/s
 - Output: T-Test Ergebnis als String
